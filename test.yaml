@@ -1,0 +1,16 @@
+metadata:
+    format: Lava-Test Test Definition 1.0
+    name: basic-test
+    description: "Simple echo command"
+    maintainer:
+        - milosz.wasilewski@linaro.org
+    os:
+        - ubuntu
+    scope:
+        - functional
+    devices:
+        - beaglebone-black
+
+run:
+    steps:
+        - ./dummy-test.sh arguments
