@@ -2,8 +2,6 @@ metadata:
     format: Lava-Test Test Definition 1.0
     name: basic-test
     description: "Simple echo command"
-    maintainer:
-        - milosz.wasilewski@linaro.org
     os:
         - ubuntu
     scope:
@@ -13,4 +11,5 @@ metadata:
 
 run:
     steps:
-        - ./dummy-test.sh arguments
+        - "lava-test-case simpletestcase --result pass"
+        - "lava-test-case fail-test --shell false"
