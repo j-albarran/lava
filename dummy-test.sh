@@ -1,6 +1,6 @@
 #!/bin/bash
 
-x="`echo "Sample"`"
+x="`echo "Sampe"`"
 
 if [ "$x" == "Sample" ]
 then
