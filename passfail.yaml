@@ -4,13 +4,8 @@ metadata:
     description: "Pass/Fail test."
     version: 1.0
 
-install:
-    git-repos:
-        - url: https://github.com/j-albarran/lava
-
 run:
     steps:
-       - cd lava
        - ./dummy-test.sh
        - "lava-test-case passtest --result pass"
        - "lava-test-case failtest --result pass"
