@@ -7,5 +7,9 @@ metadata:
 run:
     steps:
        - ./dummy-test.sh
-       - "lava-test-case passtest --result pass"
-       - "lava-test-case failtest --result pass"
+
+parse:
+    pattern: '(?P<test_case_id>.*-*)\s+:\s+(?P<result>(Sample|samp))'
+    fixupdict:
+        Sample: pass
+        samp: fail
