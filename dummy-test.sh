@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "Sampl" >> file.txt
+echo "Sample" >> file.txt
 
 x=""
 
