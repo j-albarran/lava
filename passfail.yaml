@@ -6,6 +6,6 @@ metadata:
 
 run:
     steps:
-       - ./dummy-test.sh
+       - sudo ./dummy-test.sh
        - "lava-test-case passtest --result pass"
        - "lava-test-case failtest --result pass"
