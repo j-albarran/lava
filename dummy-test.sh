@@ -1,12 +1,6 @@
 #!/bin/bash
-echo "Sample" >> file.txt
 
-x=""
-
-while read line
-do
-    x="${x}line"
-done <file.txt
+x="`echo "Sample"`"
 
 if [ "$x" == "Sample" ]
 then
