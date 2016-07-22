@@ -1,0 +1,9 @@
+metadata:
+    name: ddt-sample1
+    format: "Lava-Test-Shell Test Definition 1.0"
+    description: "Sample ddt test case run."
+
+run:
+    steps:
+       - cd /opt/ltp
+       - ./runltp -P am335x-evm -f ddt/eth_ping -s "ETH_XS_FUNC_PING"

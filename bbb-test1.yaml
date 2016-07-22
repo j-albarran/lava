@@ -1,0 +1,54 @@
+device_type: beaglebone-black
+  
+job_name: bbb-test1.yaml
+timeouts:
+  job:
+    minutes: 15
+  action:
+    minutes: 5
+  extract-nfsrootfs:
+    seconds: 90
+priority: medium
+visibility: public
+  
+actions:
+
+  - deploy:
+     timeout:
+       minutes: 5
+     to: tftp
+     kernel:
+        url: file:///tftpboot/zImage
+     nfsrootfs:
+        url: file:///home/jalbarran/ti-filesystem/tisdk-rootfs-image-am335x-evm.tar.gz
+        compression: gz
+     os: oe
+     dtb:
+        url: file:///tftpboot/am335x-boneblack.dtb
+  
+  - boot:
+     method: u-boot
+     commands: nfs
+     type: bootz
+     prompts:
+        - "root@am335x-evm:~#"
+     auto_login: {login_prompt: 'am335x-evm login:', username: root}
+     timeout:
+       minutes: 6
+ 
+  - test:
+     timeout:
+       minutes: 5
+     definitions:
+     - repository: https://github.com/j-albarran/lava
+       from: git
+       path: ddt-sample1.yaml
+       name: ddt-sample
+#     - repository: https://git.linaro.org/qa/test-definitions.git
+#       from: git
+#       path: ubuntu/smoke-tests-basic.yaml
+#       name: smoke-tests
+#     - repository: https://git.linaro.org/lava-team/lava-functional-tests.git
+#       from: git
+#       path: lava-test-shell/single-node/singlenode02.yaml
+#       name: singlenode-intermediate
