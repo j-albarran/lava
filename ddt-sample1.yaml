@@ -6,4 +6,4 @@ metadata:
 run:
     steps:
        - cd /opt/ltp
-       - ./runltp -P am335x-evm -f ddt/eth_ping -s "ETH_XS_FUNC_PING"
+       - lava-test-case test1 --shell ./runltp -P am335x-evm -f ddt/eth_ping -s "ETH_XS_FUNC_PING"
