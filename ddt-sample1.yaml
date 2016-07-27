@@ -18,7 +18,7 @@ params:
 run:
     steps:
         - 'cd /opt/ltp'
-        - '.runltp -P $PLATFORM -f $TST_CMDFILES -s $PATTERNS'
+        - './runltp -P $PLATFORM -f $TST_CMDFILES -s $PATTERNS'
 
 parse:
     pattern: "^(?!.+ED)(?P<test_case_id>\\w+)\\s+(?P<result>\\w+)\\s+\\d$"
