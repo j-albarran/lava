@@ -1,9 +1,27 @@
 metadata:
     name: ddt-sample1
     format: "Lava-Test-Shell Test Definition 1.0"
-    description: "Sample ddt test case run."
+    description: "Run LTP-DDT test suite on Debian."
+    os:
+        - debian
+    scope:
+        - functional
+    devices:
+        - dragonboard410c
+        - hikey
+
+params:
+    TST_CMDFILES: ddt/eth_ping
+    PLATFORM: beaglebone-black
+    PATTERNS: ETH_XS_FUNC_PING
 
 run:
     steps:
-       - cd /opt/ltp
-       - lava-test-case test1 --shell ./runltp -P am335x-evm -f ddt/eth_ping -s "ETH_XS_FUNC_PING"
+        - 'cd /opt/ltp'
+        - '.runltp -P $PLATFORM -f $TST_CMDFILES -s $PATTERNS'
+
+parse:
+    pattern: "^(?!.+ED)(?P<test_case_id>\\w+)\\s+(?P<result>\\w+)\\s+\\d$"
+    fixupdict:
+        FAIL: fail
+        PASS: pass
