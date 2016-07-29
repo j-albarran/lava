@@ -21,7 +21,8 @@ os.system('./runltp -P am335x-evm -f ddt/eth_ping -s "ETH_XS_FUNC_PING" > output
 
 os.system('echo HELLO')
 pattern = re.compile("^(?!.+ED)(?P<test_case_id>\w+)\s+(?P<result>PASS|FAIL)\s+\d+")
-with open(output.txt, 'r') as f
+f = open(output.txt, 'r')
+try:
    for line in f:
       for parser in [pattern]:
           result = parser.search(line)
@@ -31,5 +32,6 @@ with open(output.txt, 'r') as f
 	        test_result = result.group('result')
                 os.system('lava-test-case %s --result %s' % (test_id, test_result))
                 sys.exit(0)
+finally: f.close()
 print "ERROR: Parser failed and ran to EOF"
 sys.exit(1)
