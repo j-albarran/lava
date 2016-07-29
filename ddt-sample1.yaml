@@ -16,6 +16,7 @@ params:
 
 run:
     steps:
+        - 'cd /opt/ltp'
         - './runltp -P $PLATFORM -f $TST_CMDFILES -s $PATTERNS | tee ./ltp-ddt.py'
 
 parse:
