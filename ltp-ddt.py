@@ -16,6 +16,7 @@ import os
 
 #os.system('lava-test-case test --result fail')
 
+os.system('echo HELLO')
 pattern = re.compile("^(?!.+ED)(?P<test_case_id>\w+)\s+(?P<result>PASS|FAIL)\s+\d+")
 finished = 0
 for line in sys.stdin:
