@@ -7,8 +7,7 @@ metadata:
     scope:
         - functional
     devices:
-        - dragonboard410c
-        - hikey
+        - beaglebone-black
 
 params:
     TST_CMDFILES: ddt/eth_ping
@@ -17,8 +16,7 @@ params:
 
 run:
     steps:
-        - 'cd /opt/ltp'
-        - './runltp -P $PLATFORM -f $TST_CMDFILES -s $PATTERNS'
+        - 'ltp-ddt.sh -f $TST_CMDFILES -P $PLATFORM -s $PATTERNS'
 
 parse:
     pattern: "^(?!.+ED)(?P<test_case_id>\\w+)\\s+(?P<result>PASS|FAIL)\\s+\\d+"
