@@ -16,10 +16,7 @@ params:
 
 run:
     steps:
-        - 'export LAVA_TESTDIR=`echo $(dirname $(readlink -f build))`'
-        - 'echo $LAVA_TESTDIR'
-        - 'cd /opt/ltp'
-        - './runltp -P $PLATFORM -f $TST_CMDFILES -s $PATTERNS | $LAVA_TESTDIR/ltp-ddt.py'
+        - './ltp-ddt.py'
 
 parse:
     pattern: "^(?!.+ED)(?P<test_case_id>\\w+)\\s+(?P<result>PASS|FAIL)\\s+\\d+"
