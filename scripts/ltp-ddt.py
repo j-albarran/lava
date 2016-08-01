@@ -21,7 +21,7 @@ os.system('./runltp -P am335x-evm -f ddt/eth_ping -s "ETH_XS_FUNC_PING" > output
 
 os.system('echo HELLO')
 pattern = re.compile("^(?!.+ED)(?P<test_case_id>\w+)\s+(?P<result>PASS|FAIL)\s+\d+")
-f = open(output.txt, 'r')
+f = open("output.txt", "r")
 try:
    for line in f:
       for parser in [pattern]:
