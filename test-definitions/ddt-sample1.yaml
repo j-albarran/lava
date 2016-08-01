@@ -16,7 +16,7 @@ params:
 
 run:
     steps:
-        - './scripts/ltp-ddt.py'
+        - './scripts/lcpd_beaglebone-black.sh'
 
 parse:
     pattern: "^(?!.+ED)(?P<test_case_id>\\w+)\\s+(?P<result>PASS|FAIL)\\s+\\d+"
