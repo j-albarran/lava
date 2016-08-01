@@ -17,7 +17,7 @@ import os
 #os.system('lava-test-case test --result fail')
 
 os.system("cd /opt/ltp")
-os.system("./runltp -P am335x-evm -f ddt/eth_ping -s "ETH_XS_FUNC_PING" > output.txt")
+os.system('./runltp -P am335x-evm -f ddt/eth_ping -s "ETH_XS_FUNC_PING" > output.txt')
 
 os.system('echo HELLO')
 pattern = re.compile("^(?!.+ED)(?P<test_case_id>\w+)\s+(?P<result>PASS|FAIL)\s+\d+")
