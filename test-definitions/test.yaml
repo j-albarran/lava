@@ -1,0 +1,15 @@
+metadata:
+    format: Lava-Test Test Definition 1.0
+    name: basic-test
+    description: "Simple echo command"
+    os:
+        - ubuntu
+    scope:
+        - functional
+    devices:
+        - beaglebone-black
+
+run:
+    steps:
+        - "lava-test-case simpletestcase --result pass"
+        - "lava-test-case fail-test --shell false"
