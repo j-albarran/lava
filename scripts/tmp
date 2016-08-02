@@ -1,0 +1,96 @@
+INFO: creating /opt/ltp/output directory
+INFO: creating /opt/ltp/results directory
+INFO: Filtering testscenarios based on am335x-evm capabilities
+Checking for required user/group ids
+'nobody' user id and group found.
+'bin' user id and group found.
+'daemon' user id and group found.
+Users group found.
+Sys group found.
+Required users/groups exist.
+If some fields are empty or look unusual you may have an old version.
+Compare to the current minimal requirements in Documentation/Changes.
+ID=\"arago\"
+NAME=\"Arago\"
+VERSION=\"2016.06\"
+VERSION_ID=\"2016.06\"
+PRETTY_NAME=\"Arago 2016.06\"
+Linux am335x-evm 4.4.14-g1706ad616c #1 PREEMPT Mon Jun 27 23:12:44 EDT 2016 armv7l GNU/Linux
+Gnu C gcc (Linaro GCC 5.3-2016.02) 5.3.1 20160113
+Gnu make 4.1
+util-linux /opt/ltp/ver_linux: line 29: fdformat: command not found
+mount linux 2.27.1 (libmount 2.27.0: assert, debug)
+modutils 22
+e2fsprogs 1.43-WIP
+/opt/ltp/ver_linux: line 50: ldd: command not found
+Linux C Library r.. 1 root root 252 Jun 22 18:18 alltests
+Linux C Library . 1 root root 5562 Jun 22 18:18 alltests.orig
+Linux C Library drwxr.xr.x 25 root root 500 Jun 22 18:18 platform
+/opt/ltp/ver_linux: line 54: ldd: command not found
+Linux C++ Library /../lib/libstdc++
+Procps 3.3.11
+iproute2 iproute2-ss160111
+Kbd 2.0.3
+Sh-utils --v
+Modules Loaded bc_example rpmsg_pru virtio_rpmsg_bus musb_dsps musb_hdrc udc_core usbcore sha512_generic sha512_arm drbg des_generic cbc xf...
+free reports:
+total used free shared buff/cache available
+Mem: 509500 20184 389828 4656 99488 466044
+Swap: 0 0 0
+/proc/cpuinfo
+processor : 0
+model name : ARMv7 Processor rev 2 (v7l)
+BogoMIPS : 597.68
+Features : half thumb fastmult vfp edsp neon vfpv3 tls vfpd32
+CPU implementer : 0x41
+CPU architecture: 7
+CPU variant : 0x3
+CPU part : 0xc08
+CPU revision : 2
+Hardware : Generic AM33XX (Flattened Device Tree)
+Revision : 0000
+Serial : 0000000000000000
+no big block device was specified on commandline.
+Tests which require a big block device are disabled.
+You can specify it with option -z
+COMMAND: /opt/ltp/bin/ltp-pan -e -S -a 921 -n 921 -p -f /tmp/ltp-XXXXwAe9G9/alltests -l /tmp/tmp.kREG2R -C /opt/ltp/output/LTP_RUN_ON-...
+INFO: Restricted to ETH_XS_FUNC_PING
+LOG File: /tmp/tmp.kREG2R
+FAILED COMMAND File: /opt/ltp/output/LTP_RUN_ON-tmp.kREG2R.failed
+TCONF COMMAND File: /opt/ltp/output/LTP_RUN_ON-tmp.kREG2R.tconf
+Running tests.......
+<<<test_start>>>
+tag=ETH_XS_FUNC_PING stime=1466619485
+cmdline=\"source 'common.sh'; iface=`get_eth_iface_name.sh` || die \"error getting eth interface name\"; do_cmd \"ifconfig ${iface} up\"; host=`get...
+contacts=\"\"
+analysis=exit
+<<<test_output>>>
+|TRACE LOG|Inside do_cmd:CMD=ifconfig eth0 up|
+|TRACE LOG|Inside do_cmd:CMD=ping 192.168.1.254 -c 3|
+PING 192.168.1.254 (192.168.1.254): 56 data bytes
+64 bytes from 192.168.1.254: seq=0 ttl=64 time=2.967 ms
+64 bytes from 192.168.1.254: seq=1 ttl=64 time=1.523 ms
+64 bytes from 192.168.1.254: seq=2 ttl=64 time=1.845 ms
+--- 192.168.1.254 ping statistics ---
+3 packets transmitted, 3 packets received, 0% packet loss
+round-trip min/avg/max = 1.523/2.111/2.967 ms
+incrementing stop
+<<<execution_status>>>
+initiation_status=\"ok\"
+duration=3 termination_type=exited termination_id=0 corefile=no
+cutime=14 cstime=9
+<<<test_end>>>
+INFO: ltp-pan reported all tests PASS
+LTP Version: 20150119
+###############################################################\"
+Done executing testcases.\"
+LTP Version: 20150119
+Result log is in the /tmp/tmp.kREG2R \"
+###############################################################\"
+Test Start Time: Wed Jun 22 18:18:05 2016
+-----------------------------------------
+Testcase Result Exit Value
+-------- ------ ----------
+ETH_XS_FUNC_PING PASS 0
+-----------------------------------------------
+
