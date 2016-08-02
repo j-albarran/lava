@@ -7,7 +7,6 @@ import subprocess
 
 os.system('/opt/ltp/runltp -P am335x-evm -f ddt/eth_ping -s "ETH_XS_FUNC_PING" > output.txt')
 os.system('/opt/ltp/runltp -P am335x-evm -f ddt/memtest -s "MEMORY_M_FUNC_MEMTESTER_10pct_1time" >> output.txt')
-os.system('/opt/ltp/runltp -P am335x-evm -f ddt/wdt_test -s "WDT_S_FUNC_SETTIMEOUT" >> output.txt')
 
 pattern = re.compile("^(?!.+ED)(?P<test_case_id>\\w+)\\s+(?P<result>PASS|FAIL)\\s+\\d+")
 f = open("output.txt", "r")
