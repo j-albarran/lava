@@ -5,23 +5,9 @@ import sys
 import os
 import subprocess
 
-#def results():
-#   pattern = re.compile("^(?!.+ED)(?P<test_case_id>\w+)\s+(?P<result>PASS|FAIL)\s+\d+")
-#   finished = 0
-#   for line in sys.stdin:
-#       for parser in [pattern]:
-#           result = parser.search(line)
-#           if result is not None:
-#              if p
-#                 test_result = result.group
-
-#os.system('lava-test-case test --result fail')
-
-#os.chdir("/opt/ltp")
 os.system('/opt/ltp/runltp -P am335x-evm -f ddt/eth_ping -s "ETH_XS_FUNC_PING"')
 
-os.system('echo HELLO')
-pattern = re.compile("^(?!.+ED)(?P<test_case_id>\w+)\s+(?P<result>PASS|FAIL)\s+\d+")
+pattern = re.compile("^(?!.+ED)(?P<test_case_id>\\w+)\\s+(?P<result>PASS|FAIL)\\s+\\d+")
 f = open("output.txt", "r")
 try:
    for line in f:
