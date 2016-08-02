@@ -19,7 +19,7 @@ try:
                 test_id = result.group('test_case_id')
 	        test_result = result.group('result')
                 os.system('lava-test-case %s --result %s' % (test_id, test_result.lower()))
-                sys.exit(0)
+   sys.exit(0)
 finally: f.close()
 print "ERROR: Parser failed and ran to EOF"
 sys.exit(1)
