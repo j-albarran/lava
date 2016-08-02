@@ -14,6 +14,10 @@ params:
     PLATFORM: beaglebone-black
     PATTERNS: ETH_XS_FUNC_PING
 
+install:
+    deps:
+        - wget
+
 run:
     steps:
         - './scripts/lcpd_beaglebone-black_daily.sh'
