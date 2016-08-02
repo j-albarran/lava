@@ -6,7 +6,7 @@ import os
 import subprocess
 
 os.system('/opt/ltp/runltp -P am335x-evm -f ddt/eth_ping -s "ETH_XS_FUNC_PING" > output.txt')
-os.system('/opt/ltp/runltp -P am335x-evm -f ddt/emmc_dd_rw -s "EMMC_S_FUNC_DD_RW_QUICK" >> output.txt')
+os.system('/opt/ltp/runltp -P am335x-evm -f ddt/emmc_dd_rw_ext2 -s "EMMC_S_FUNC_EXT2_DD_RW_100M" >> output.txt')
 
 pattern = re.compile("^(?!.+ED)(?P<test_case_id>\\w+)\\s+(?P<result>PASS|FAIL)\\s+\\d+")
 f = open("output.txt", "r")
