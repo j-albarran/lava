@@ -53,7 +53,7 @@ def results():
               if result is not None:
                  if parser is pattern and i == 0:
                     test_id = result.group('test_case_id')
-        	        test_result = result.group('result')
+        	    test_result = result.group('result')
                     os.system('lava-test-case %s --result %s' % (test_id, test_result.lower()))
                  elif "not supported" in line or i == 1:
                      i = 1
