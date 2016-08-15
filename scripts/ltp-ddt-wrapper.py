@@ -45,22 +45,15 @@ def runtests():
 def results():
     pattern = re.compile("^(?!.+ED)(?P<test_case_id>\\w+)\\s+(?P<result>PASS|FAIL)\\s+\\d+")
     f = open("output.txt", "r")
-    i = 0
     try:
        for line in f:
           for parser in [pattern]:
               result = parser.search(line)
               if result is not None:
-                 if parser is pattern and i == 0:
+                 if parser is pattern:
                     test_id = result.group('test_case_id')
         	    test_result = result.group('result')
                     os.system('lava-test-case %s --result %s' % (test_id, test_result.lower()))
-                 elif "not supported" in line or i == 1:
-                     i = 1
-                     test_id = result.group('test_case_id')
-                     test_result = "skip"
-                     os.system('lava-test-case %s --result %s' % (test_id, test_result))
-                     i = 0
                     
        sys.exit(0)
     finally: f.close()
