@@ -14,7 +14,7 @@ def runtests():
     os.system('/opt/ltp/runltp -P beaglebone-black -f ddt/gpio-tests -s "GPIO_S_FUNC_DIR_IN_ALL_BANK" 2>&1 | tee -a output.txt')
     #os.system('/opt/ltp/runltp -P beaglebone-black -f ddt/memtest -s "MEMORY_M_FUNC_MEMTESTER_10pct_1time" 2>&1 | tee -a output.txt')
     #os.system('/opt/ltp/runltp -P beaglebone-black -f ddt/crypto_aes -s "CRYPTO_S_PERF_AES" 2>&1 | tee -a output.txt')
-    #os.system('/opt/ltp/runltp -P beaglebone-black -f ddt/pwm_backlight -s "PWM_S_FUNC_BACKLIGHT_00" 2>&1 | tee -a output.txt')
+    os.system('/opt/ltp/runltp -P beaglebone-black -f ddt/pwm_backlight -s "PWM_S_FUNC_BACKLIGHT_00" 2>&1 | tee -a output.txt')
     #os.system('/opt/ltp/runltp -P beaglebone-black -f ddt/pwm_backlight -s "PWM_S_FUNC_BACKLIGHT_50" 2>&1 | tee -a output.txt')
     #os.system('/opt/ltp/runltp -P beaglebone-black -f ddt/usbhost_dd_rw_vfat -s "USBHOST_S_FUNC_VFAT_DD_RW_0007" 2>&1 | tee -a output.txt')
     #os.system('/opt/ltp/runltp -P beaglebone-black -f ddt/usbhost_dd_rw_ext2 -s "USBHOST_M_FUNC_EXT2_DD_RW_0007" 2>&1 | tee -a output.txt')
