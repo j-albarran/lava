@@ -4,6 +4,7 @@ import re
 import sys
 import os
 
+# Runs the tests specified in a sequential order
 def runtests():
     #os.system('/opt/ltp/runltp -P beaglebone-black -f ddt/emmc_dd_rw_vfat -s "EMMC_S_FUNC_VFAT_DD_RW_640K" 2>&1 | tee output.txt')
     #os.system('/opt/ltp/runltp -P beaglebone-black -f ddt/emmc_dd_rw_vfat -s "EMMC_S_FUNC_VFAT_DD_RW_100M" 2>&1 | tee -a output.txt')
@@ -25,7 +26,7 @@ def runtests():
     #os.system('/opt/ltp/runltp -P beaglebone-black -f ddt/mmc_dd_rw -s "MMC_S_FUNC_DD_RW_QUICK" 2>&1 | tee -a output.txt')
     #os.system('/opt/ltp/runltp -P beaglebone-black -f ddt/mmc_dd_rw -s "MMC_M_FUNC_DD_RW_20TIMES" 2>&1 | tee -a output.txt')
     #os.system('/opt/ltp/runltp -P beaglebone-black -f ddt/fbdev_disp -s "FBDEV_XS_FUNC" 2>&1 | tee -a output.txt')
-    os.system('/opt/ltp/runltp -P beaglebone-black -f ddt/eth_ping -s "ETH_S_FUNC_PING_300S" 2>&1 | tee -a output.txt')
+    #os.system('/opt/ltp/runltp -P beaglebone-black -f ddt/eth_ping -s "ETH_S_FUNC_PING_300S" 2>&1 | tee -a output.txt')
     #os.system('/opt/ltp/runltp -P beaglebone-black -f ddt/eth_ping -s "ETH_S_FUNC_MULTI_INTERFACE_PING_DOWN" 2>&1 | tee -a output.txt')
     #os.system('/opt/ltp/runltp -P beaglebone-black -f ddt/rtc_readtime -s "RTC_S_FUNC_READTIME_0001" 2>&1 | tee -a output.txt')
     #os.system('/opt/ltp/runltp -P beaglebone-black -f ddt/rtc_setgettime -s "RTC_S_FUNC_SETGETTIME_0001" 2>&1 | tee -a output.txt')
@@ -40,18 +41,27 @@ def runtests():
     #os.system('/opt/ltp/runltp -P beaglebone-black -f ddt/powermgr_suspend -s "POWERMGR_S_FUNC_SIMPLE_SUSPEND" 2>&1 | tee -a output.txt')
     #os.system('/opt/ltp/runltp -P beaglebone-black -f ddt/powermgr_suspend -s "POWERMGR_S_FUNC_SIMPLE_STANDBY" 2>&1 | tee -a output.txt')
 
+# Parses the results of the tests once all tests have run
 def results():
     pattern = re.compile("^(?!.+ED)(?P<test_case_id>\\w+)\\s+(?P<result>PASS|FAIL)\\s+\\d+")
     f = open("output.txt", "r")
+    i = 0
     try:
        for line in f:
           for parser in [pattern]:
               result = parser.search(line)
               if result is not None:
-                 if parser is pattern:
+                 if parser is pattern and i == 0:
                     test_id = result.group('test_case_id')
-        	    test_result = result.group('result')
+        	        test_result = result.group('result')
                     os.system('lava-test-case %s --result %s' % (test_id, test_result.lower()))
+                 elif "not supported" in line or i == 1:
+                     i = 1
+                     test_id = result.group('test_case_id')
+                     test_result = "skip"
+                     os.system('lava-test-case %s --result %s' % (test_id, test_result))
+                     i = 0
+                    
        sys.exit(0)
     finally: f.close()
     print "ERROR: Parser failed and ran to EOF"
